@@ -1,0 +1,232 @@
+
+body{
+    background-color: black;
+}
+
+/* header  */
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 0 auto;
+    background-color: black;
+    color: yellow
+    
+}
+
+h1 {
+    font-size: 40px;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+/* main */
+main {
+    margin-top: 100px;
+}
+
+/* top buttons */
+
+#add-and-filter {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 10px;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+button {
+    height: 50px;
+    width: 150px;
+    border: dimgray;
+    border-radius: 50px;
+    background-color: dimgray;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+select{
+    height: 50px;
+    width: 150px;
+    border: dimgray;
+    border-radius: 50px;
+    background-color: dimgray;
+    padding: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* bookmark section */
+.bm-list-header {
+    text-align: center;
+    margin-bottom: 10px;
+    color: yellow;
+    font-family:'Luckiest Guy', cursive;
+    font-size: 24px;
+}
+
+
+li {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 600px;
+    max-width: 80%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 10px;
+    gap: 80%;
+    list-style: none;
+    background-color:dimgray;
+    font-family:'Luckiest Guy', cursive;
+}
+
+/* rating and title */
+.bookmark-default {
+    display: flex;
+    justify-content: space-around;
+    gap: 55%;
+    padding: 5px;
+    font-size: 24px;
+}
+
+/* link and description */
+.bm-website {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: yellow;
+    cursor: pointer;
+}
+
+.bm-description{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    max-width: 50%;
+    padding: 5px 10px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* bookmark buttons (change view and delete) */
+.bookmark-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.change-view {
+    background-color: black;
+    color: yellow;
+    height: 40px;
+    width: 120px;
+    font-size: 14px;
+}
+
+.delete {
+    background-color:black;
+    color: yellow;
+    height: 40px;
+    width: 120px;
+    font-size: 14px;
+}
+
+
+/* hide expanded part of bookmark */
+.hidden {
+    display: none;
+}
+
+/* form section for adding a new bookmark */
+#add-and-filter {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+.form-card {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 500px;
+    max-width: 80%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: yellow;
+    color: black;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.form-card h3 {
+    text-align: center;
+}
+
+.form-title, .form-url {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+textarea{
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 8px;
+}
+
+.form-rating{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    /* gap:10%; */
+}
+
+#js-form-filter{
+    background-color: dimgray;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+/* button (Cancel and Create) */
+.cancel-button {
+    background-color:black;
+    color: yellow;
+}
+
+.create-button {
+    background-color:black;
+    color: yellow;
+    
+}
+
+
+
+@media all and (min-width: 450px) {
+    
+    h1 {
+        font-size: 56px;
+    }
+    
+    
+    .buttons{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+    
+    
+    
+}
+
+
