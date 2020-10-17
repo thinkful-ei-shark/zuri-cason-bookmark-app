@@ -1,6 +1,6 @@
 # zuri-cason-bookmark-app
 
-thinkful-ei-shark.github.io/zuri-cason-bookmark-app/
+https://thinkful-ei-shark.github.io/zuri-cason-bookmark-app/
 
 <h2> User Story: </h2>
 <br>
