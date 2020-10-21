@@ -81,7 +81,7 @@ let bookmarkTemplate = function () {
 // Where all of the created bookmarks will go 
 let bookmarkList = function () {
     return `<section id="bookmark-list">
-        <h3 class="bm-list-header">Bookmarks<h3>
+        <h3 class="bm-list-header">Bookmarks</h3>
         <span id="bookmark-temp">
             ${bookmarkTemplate()}
         </span>
@@ -123,7 +123,7 @@ let formTemplate = function () {
 }
 
 // Where the bookmark form template will be rendered
-let bookmarkForm = function () {
+let bookmarkSection = function () {
     return `<section id="form"></section>`;
 }
 
@@ -145,23 +145,17 @@ const addAndFilter = function () {
 
 // Main content: consolidation of all of the <main> content to one function 
 const mainContent = function () {
-    return `<main>
-    ${addAndFilter()}
-    ${bookmarkForm()}
-    ${bookmarkList()}
- </main>`;
+    return `${addAndFilter()}
+    ${bookmarkSection()}
+    ${bookmarkList()}`;
 }
 
 
-// Title
-const title = function () {
-    return '<header><h1>Bookmark App</h1></header>'
-}
+
 
 // What we will see upon entering the website
 const defaultHtml = function () {
-    $('body').html(`${title()}
-    ${mainContent()}`);
+    $('main').html(`${mainContent()}`);
 }
 
 export default {
