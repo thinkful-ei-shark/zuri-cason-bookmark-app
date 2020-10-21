@@ -4,8 +4,9 @@ https://thinkful-ei-shark.github.io/zuri-cason-bookmark-app/
 
 
 <h2>Project Overview</h2>
-Using everything I have learned over the Fundamentals section of the course, I have built the frontend for an API-powered Bookmarks application that lets the user store and rate their custom web bookmarks.
 <br>
+Using everything I have learned over the Fundamentals section of the course, I have built the frontend for an API-powered Bookmarks application that lets the user store and rate their custom web bookmarks.
+
 
 <h3> User Story: </h3>
 <br>
