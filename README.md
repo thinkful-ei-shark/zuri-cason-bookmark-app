@@ -9,7 +9,6 @@ Using everything I have learned over the Fundamentals section of the course, I h
 
 
 <h3> User Story: </h3>
-<br>
 I can add bookmarks to my bookmark list. Bookmarks contain:
     title
     url link
