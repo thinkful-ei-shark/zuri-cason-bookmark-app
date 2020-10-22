@@ -89,6 +89,7 @@ let bookmarkList = function () {
 }
 
 // Add bookmark form template
+// change input text & make desc div a column
 let formTemplate = function () {
     return `<div class="form-card">
     <form>
@@ -98,15 +99,15 @@ let formTemplate = function () {
             <input type="text" name="title" id="title" placeholder="Google" >
         </div>
         <div class="form-url">
-            <label for="url">Enter Url: </label>
-            <input type="text" name="url" id="website" placeholder="http://google.com" >
+            <label for="website">Enter Url: </label>
+            <input type="text" name="website" id="website" placeholder="http://google.com" >
         </div>
-        <div>
-            <textarea name="description" id="form-description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
+        <div class="desc-section">
+            <textarea aria-label="form-description" name="description" id="form-description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
         </div>
         <div class="form-rating"> 
             <p class="rate-html">Rate <p>
-            <select name="form-filter" id="js-form-filter">
+            <select aria-label="form-filter" name="form-filter" id="js-form-filter">
             <option value="1" selected>1 &#11088</option>
             <option value="2">2 &#11088</option>
             <option value="3">3 &#11088</option>

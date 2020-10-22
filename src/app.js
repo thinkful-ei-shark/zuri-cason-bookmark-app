@@ -21,7 +21,7 @@ class Bookmark {
             api.readBookmarks()
                 .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
         } catch (error) {
-            return console.log(error.message);
+            return alert(error.message);
         }
     }
 }
@@ -40,8 +40,13 @@ const submitForm = function () {
             if (!title || title.trim() === "") {
                 alert("Needs Title");
             }
-            else if (!url || url.trim() === "" || url === undefined) {
+
+            if (!url || url.trim() === "" || url === undefined) {
                 alert("Needs Url");
+            }
+
+            if (!url.includes('https://')) {
+                alert("Url must include 'https://'")
             }
             else {
                 const currentBookmark = new Bookmark(title, url, desc, rating)
@@ -58,7 +63,7 @@ const deleteItem = function () {
         let id = $(event.target).parents('li').attr("id")
         api.deleteBookmark(id)
             .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
-            .catch(error => console.log(error.message))
+            .catch(error => alert(error.message))
     })
 }
 
