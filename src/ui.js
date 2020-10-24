@@ -35,6 +35,8 @@ const showNewForm = function () {
         event.preventDefault()
         // console.log("click button")
         render('#form', formTemplate)
+        expand()
+        app.deleteItem()
     })
 }
 
@@ -106,9 +108,9 @@ let formTemplate = function () {
             <textarea aria-label="form-description" name="description" id="form-description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
         </div>
         <div class="form-rating"> 
-            <p class="rate-html">Rate <p>
-            <select aria-label="form-filter" name="form-filter" id="js-form-filter">
-            <option value="1" selected>1 &#11088</option>
+            <select aria-label="form-filter" name="form-filter" id="form-filter">
+            <option value="1" selected>Rate</option>
+            <option value="1">1 &#11088</option>
             <option value="2">2 &#11088</option>
             <option value="3">3 &#11088</option>
             <option value="4">4 &#11088</option>
@@ -116,7 +118,7 @@ let formTemplate = function () {
             </select>
         </div>
         <div class="buttons" id="js-buttons">
-            <button class="cancel-button" id="cancel";>Cancel</button>
+            <button class="cancel-button" id="cancel">Cancel</button>
             <button type="sumbit" class="create-button">Create</button>
         </div>
     </form>

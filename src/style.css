@@ -43,7 +43,7 @@ button {
     cursor: pointer;
 }
 
-select{
+select {
     height: 50px;
     width: 150px;
     border: dimgray;
@@ -156,8 +156,7 @@ li {
     align-content: center;
     margin: 0 auto;
     padding: 15px 0;
-    width: 500px;
-    max-width: 80%;
+    width: 80%;
     box-sizing: border-box;
     border-radius: 10px;
     background-color: yellow;
@@ -170,21 +169,41 @@ li {
 }
 
 .form-title, .form-url {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin-bottom: 10px;
-    margin-left: 20px;
+    
+}
+
+.form-title label, .form-url label {
+    text-align: center;
+}
+
+#title, #website{
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 textarea{
-    margin-left: 5px;
-    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
     border-radius: 8px;
+    width: 60%;
 }
 
 .form-rating{
     display: flex;
     justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
     margin-bottom: 10px;
-    /* gap:10%; */
 }
 
 #js-form-filter{
@@ -193,17 +212,22 @@ textarea{
 
 .buttons{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-direction: column;
     gap: 10px;
 }
 
 /* button (Cancel and Create) */
 .cancel-button {
+    margin-right: auto;
+    margin-left: auto;
     background-color:black;
     color: yellow;
 }
 
 .create-button {
+    margin-right: auto;
+    margin-left: auto;
     background-color:black;
     color: yellow;
     
@@ -243,16 +267,15 @@ textarea{
     }
     
     textarea{
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 8px;
     }
     
     .form-rating{
         display: flex;
         justify-content: center;
-        margin-bottom: 10px;
-        /* gap:10%; */
+        flex-direction: row;
     }
     
     #js-form-filter{
@@ -262,6 +285,7 @@ textarea{
     .buttons{
         display: flex;
         justify-content: space-evenly;
+        flex-direction: row;
         gap: 10px;
     }
     
@@ -275,14 +299,7 @@ textarea{
         background-color:black;
         color: yellow;
         
-    }
-    
-    .buttons{
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        margin: 0 auto;
-    }
+    }  
     
     .bookmark-default {
         gap: 55%

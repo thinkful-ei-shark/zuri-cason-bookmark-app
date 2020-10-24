@@ -23,6 +23,9 @@ class Bookmark {
         } catch (error) {
             return alert(error.message);
         }
+
+        // adds bookmark to the store
+        store.bookmarks.push(newBookmark);
     }
 }
 
@@ -35,7 +38,7 @@ const submitForm = function () {
             let title = $('main').find("#title").val();
             let url = $('main').find("#website").val();
             let desc = $('main').find("#form-description").val();
-            let rating = $('main').find("#js-form-filter").val();
+            let rating = $('main').find("#form-filter").val();
 
             if (!title || title.trim() === "") {
                 alert("Needs Title");
@@ -64,6 +67,9 @@ const deleteItem = function () {
         api.deleteBookmark(id)
             .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
             .catch(error => alert(error.message))
+
+        // removes bookmark from the store
+        store.bookmarks = store.bookmarks.filter(currentItem => currentItem.id !== id)
     })
 }
 

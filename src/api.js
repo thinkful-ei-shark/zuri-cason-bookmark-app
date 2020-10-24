@@ -12,8 +12,7 @@ const createBookmark = async function (bookmark) {
         },
         body: JSON.stringify(bookmark)
     });
-    const newBookmark = await response.json();
-    return store.bookmarks.push(newBookmark);
+    // const newBookmark = await response.json();
 }
 
 
@@ -31,7 +30,6 @@ const deleteBookmark = async (id) => {
         method: 'DELETE',
     });
     // const result = response.json;
-    return store.bookmarks = store.bookmarks.filter(currentItem => currentItem.id !== id)
 }
 
 
