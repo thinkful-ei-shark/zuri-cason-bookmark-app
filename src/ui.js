@@ -145,7 +145,6 @@ const addAndFilter = function () {
     </section>`;
 }
 
-
 // Main content: consolidation of all of the <main> content to one function 
 const mainContent = function () {
     return `${addAndFilter()}
