@@ -21,8 +21,11 @@ class Bookmark {
             api.readBookmarks()
                 .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
         } catch (error) {
-            return console.log(error.message);
+            return alert(error.message);
         }
+
+        // adds bookmark to the store
+        store.bookmarks.push(newBookmark);
     }
 }
 
@@ -35,13 +38,18 @@ const submitForm = function () {
             let title = $('main').find("#title").val();
             let url = $('main').find("#website").val();
             let desc = $('main').find("#form-description").val();
-            let rating = $('main').find("#js-form-filter").val();
+            let rating = $('main').find("#form-filter").val();
 
             if (!title || title.trim() === "") {
                 alert("Needs Title");
             }
-            else if (!url || url.trim() === "" || url === undefined) {
+
+            if (!url || url.trim() === "" || url === undefined) {
                 alert("Needs Url");
+            }
+
+            if (!url.includes('https://')) {
+                alert("Url must include 'https://'")
             }
             else {
                 const currentBookmark = new Bookmark(title, url, desc, rating)
@@ -58,7 +66,10 @@ const deleteItem = function () {
         let id = $(event.target).parents('li').attr("id")
         api.deleteBookmark(id)
             .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
-            .catch(error => console.log(error.message))
+            .catch(error => alert(error.message))
+
+        // removes bookmark from the store
+        store.bookmarks = store.bookmarks.filter(currentItem => currentItem.id !== id)
     })
 }
 

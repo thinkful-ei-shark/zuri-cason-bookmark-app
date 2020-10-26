@@ -35,6 +35,8 @@ const showNewForm = function () {
         event.preventDefault()
         // console.log("click button")
         render('#form', formTemplate)
+        expand()
+        app.deleteItem()
     })
 }
 
@@ -81,7 +83,7 @@ let bookmarkTemplate = function () {
 // Where all of the created bookmarks will go 
 let bookmarkList = function () {
     return `<section id="bookmark-list">
-        <h3 class="bm-list-header">Bookmarks<h3>
+        <h3 class="bm-list-header">Bookmarks</h3>
         <span id="bookmark-temp">
             ${bookmarkTemplate()}
         </span>
@@ -89,6 +91,7 @@ let bookmarkList = function () {
 }
 
 // Add bookmark form template
+// change input text & make desc div a column
 let formTemplate = function () {
     return `<div class="form-card">
     <form>
@@ -98,16 +101,16 @@ let formTemplate = function () {
             <input type="text" name="title" id="title" placeholder="Google" >
         </div>
         <div class="form-url">
-            <label for="url">Enter Url: </label>
-            <input type="text" name="url" id="website" placeholder="http://google.com" >
+            <label for="website">Enter Url: </label>
+            <input type="text" name="website" id="website" placeholder="http://google.com" >
         </div>
-        <div>
-            <textarea name="description" id="form-description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
+        <div class="desc-section">
+            <textarea aria-label="form-description" name="description" id="form-description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
         </div>
         <div class="form-rating"> 
-            <p class="rate-html">Rate <p>
-            <select name="form-filter" id="js-form-filter">
-            <option value="1" selected>1 &#11088</option>
+            <select aria-label="form-filter" name="form-filter" id="form-filter">
+            <option value="1" selected>Rate</option>
+            <option value="1">1 &#11088</option>
             <option value="2">2 &#11088</option>
             <option value="3">3 &#11088</option>
             <option value="4">4 &#11088</option>
@@ -115,7 +118,7 @@ let formTemplate = function () {
             </select>
         </div>
         <div class="buttons" id="js-buttons">
-            <button class="cancel-button" id="cancel";>Cancel</button>
+            <button class="cancel-button" id="cancel">Cancel</button>
             <button type="sumbit" class="create-button">Create</button>
         </div>
     </form>
@@ -123,7 +126,7 @@ let formTemplate = function () {
 }
 
 // Where the bookmark form template will be rendered
-let bookmarkForm = function () {
+let bookmarkSection = function () {
     return `<section id="form"></section>`;
 }
 
@@ -145,23 +148,17 @@ const addAndFilter = function () {
 
 // Main content: consolidation of all of the <main> content to one function 
 const mainContent = function () {
-    return `<main>
-    ${addAndFilter()}
-    ${bookmarkForm()}
-    ${bookmarkList()}
- </main>`;
+    return `${addAndFilter()}
+    ${bookmarkSection()}
+    ${bookmarkList()}`;
 }
 
 
-// Title
-const title = function () {
-    return '<header><h1>Bookmark App</h1></header>'
-}
+
 
 // What we will see upon entering the website
 const defaultHtml = function () {
-    $('body').html(`${title()}
-    ${mainContent()}`);
+    $('main').html(`${mainContent()}`);
 }
 
 export default {
