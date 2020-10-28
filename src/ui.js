@@ -1,28 +1,28 @@
 import $ from 'jquery';
 import app from './app';
-import store from './store'
+import store from './store';
 
 
 // Render function
 const render = (where, what) => {
-    $(where).html(what)
-    expand()
-    app.deleteItem()
+    $(where).html(what);
+    expand();
+    app.deleteItem();
 }
 
 // handler functions that do not require data from 'store'
 const nonDataHandlers = function () {
-    showNewForm()
-    removeForm()
-    expand()
+    showNewForm();
+    removeForm();
+    expand();
 }
 
 // Expands current bookmark
 const expand = function () {
     $('.change-view').click(event => {
-        let id = $(event.target).parents('li').attr("id")
+        let id = $(event.target).parents('li').attr("id");
         // console.log(id)
-        let target = $("main").find(`li[id=${id}]`).find(".expanded-view, .delete")
+        let target = $("main").find(`li[id=${id}]`).find(".expanded-view, .delete");
         $(target).toggleClass("hidden");
 
     })
@@ -34,24 +34,24 @@ const showNewForm = function () {
     newButton.click(event => {
         event.preventDefault()
         // console.log("click button")
-        render('#form', formTemplate)
-        expand()
-        app.deleteItem()
+        render('#form', formTemplate);
+        expand();
+        app.deleteItem();
     })
 }
 
 // remove form from the dom
 const removeForm = function () {
-    $('#form').on('click', '#cancel', () => render('#form', ''))
+    $('#form').on('click', '#cancel', () => render('#form', ''));
 }
 
 // checks to see if descricption has been filled
 function descriptionCheck(description) {
     if (description === "") {
-        return ''
+        return '';
     }
     else {
-        return `<p class="bm-description">${description}<p>`
+        return `<p class="bm-description">${description}<p>`;
     }
 }
 
@@ -84,9 +84,9 @@ let bookmarkTemplate = function () {
 let bookmarkList = function () {
     return `<section id="bookmark-list">
         <h3 class="bm-list-header">Bookmarks</h3>
-        <span id="bookmark-temp">
+        <div id="bookmark-temp">
             ${bookmarkTemplate()}
-        </span>
+        </div>
     </section>`;
 }
 
@@ -119,7 +119,7 @@ let formTemplate = function () {
         </div>
         <div class="buttons" id="js-buttons">
             <button class="cancel-button" id="cancel">Cancel</button>
-            <button type="sumbit" class="create-button">Create</button>
+            <button class="create-button">Create</button>
         </div>
     </form>
 </div>`;

@@ -1,31 +1,32 @@
 import $ from 'jquery';
 import ui from './ui';
-import api from './api'
-import store from './store'
+import api from './api';
+import store from './store';
 
 // class for bookmark proerties and methods
 class Bookmark {
 
-    constructor(title, url, desc, rating, expanded) {
-        this.title = title
-        this.url = url
-        this.desc = desc
-        this.rating = rating
+    constructor(title, url, desc, rating) {
+        this.title = title;
+        this.url = url;
+        this.desc = desc;
+        this.rating = rating;
     };
 
     // add method that creates new bookmark
     async addItem(newBookmark) {
         // call api post request
         try {
-            await api.createBookmark(newBookmark);
-            api.readBookmarks()
-                .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
+            await api.createBookmark(newBookmark)
+                // adds bookmark to the store
+                .then(createdBookmark => {
+                    store.bookmarks.push(createdBookmark);
+                    ui.render('#bookmark-temp', ui.bookmarkTemplate());
+                })
         } catch (error) {
             return alert(error.message);
         }
 
-        // adds bookmark to the store
-        store.bookmarks.push(newBookmark);
     }
 }
 
@@ -41,35 +42,35 @@ const submitForm = function () {
             let rating = $('main').find("#form-filter").val();
 
             if (!title || title.trim() === "") {
-                alert("Needs Title");
+                return alert("Needs Title");
             }
 
             if (!url || url.trim() === "" || url === undefined) {
-                alert("Needs Url");
+                return alert("Needs Url");
             }
 
             if (!url.includes('https://')) {
-                alert("Url must include 'https://'")
+                return alert("Url must include 'https://'");
             }
             else {
                 const currentBookmark = new Bookmark(title, url, desc, rating)
                 currentBookmark.addItem(currentBookmark)
             }
-            console.log(store.bookmarks)
-            ui.render("#form", '')
+            console.log(store.bookmarks);
+            ui.render("#form", '');
         })
 }
 
 // delete function that deletes new bookmark 
 const deleteItem = function () {
     $('.delete').click(event => {
-        let id = $(event.target).parents('li').attr("id")
+        let id = $(event.target).parents('li').attr("id");
         api.deleteBookmark(id)
             .then(() => ui.render('#bookmark-temp', ui.bookmarkTemplate()))
-            .catch(error => alert(error.message))
+            .catch(error => alert(error.message));
 
         // removes bookmark from the store
-        store.bookmarks = store.bookmarks.filter(currentItem => currentItem.id !== id)
+        store.bookmarks = store.bookmarks.filter(currentItem => currentItem.id !== id);
     })
 }
 
@@ -77,17 +78,17 @@ const deleteItem = function () {
 // function that filters the bookmark list 
 const filter = function () {
     $('#js-filter').on('change', function () {
-        store.filter = $('#js-filter option:selected').val()
-        ui.render('#bookmark-temp', ui.bookmarkTemplate())
+        store.filter = $('#js-filter option:selected').val();
+        ui.render('#bookmark-temp', ui.bookmarkTemplate());
         // console.log(store.filter)
     })
 }
 
 // data driven event handlers
 function dataEventHandlers() {
-    submitForm()
-    deleteItem()
-    filter()
+    submitForm();
+    deleteItem();
+    filter();
 }
 
 

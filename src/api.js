@@ -1,4 +1,3 @@
-import store from './store'
 const URL = 'https://thinkful-list-api.herokuapp.com/zuri/bookmarks';
 
 
@@ -12,7 +11,7 @@ const createBookmark = async function (bookmark) {
         },
         body: JSON.stringify(bookmark)
     });
-    // const newBookmark = await response.json();
+    return response.json();
 }
 
 
@@ -20,8 +19,7 @@ const createBookmark = async function (bookmark) {
 const readBookmarks = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    store.bookmarks = data;
-    return store.bookmarks;
+    return data;
 }
 
 // executes a delete request for the current object

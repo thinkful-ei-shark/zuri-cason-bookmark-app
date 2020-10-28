@@ -7,7 +7,7 @@ body{
 header {
     display: flex;
     justify-content: center;
-    margin-top: 0 auto;
+    margin-top: 0;
     background-color: black;
     color: yellow
     
