@@ -11,9 +11,11 @@ const main = function () {
     api.readBookmarks()
         .then(data => {
             store.bookmarks = data
-            ui.defaultHtml()
-            ui.nonDataHandlers()
-            app.dataEventHandlers()
+            // adds a key "expaded upon intial rendering"
+            store.bookmarks.forEach(bookmark => bookmark.expanded = false);
+            ui.defaultHtml();
+            ui.nonDataHandlers();
+            app.dataEventHandlers();
         })
 
 }

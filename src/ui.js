@@ -7,7 +7,6 @@ import store from './store';
 const render = (where, what) => {
     $(where).html(what);
     expand();
-    app.deleteItem();
 }
 
 // handler functions that do not require data from 'store'
@@ -21,11 +20,34 @@ const nonDataHandlers = function () {
 const expand = function () {
     $('.change-view').click(event => {
         let id = $(event.target).parents('li').attr("id");
-        // console.log(id)
-        let target = $("main").find(`li[id=${id}]`).find(".expanded-view, .delete");
-        $(target).toggleClass("hidden");
+        let targetBookmark = store.bookmarks.find(bookmark => bookmark.id === id);
+        targetBookmark.expanded = !targetBookmark.expanded;
 
+        console.log(targetBookmark.expanded)
+        addInfo(targetBookmark.expanded, targetBookmark);
+        app.deleteItem();
     })
+}
+
+// inserts the information into the expanded sections of the current bookmark
+const addInfo = function (isExpanded, targetBookmark) {
+    // where the website and description will render 
+    let contentSection = $(event.target).parents('li').find(".expanded-view");
+    // where the delete button will render
+    let buttonSection = $(event.target).parents('li').find(".bookmark-buttons");
+
+    if (isExpanded === true) {
+        return $(contentSection).html(`<a href="${targetBookmark.url}" class="bm-website">Vist Website</a>
+        ${descriptionCheck(targetBookmark.desc)}`),
+            $(buttonSection).html(`<button class="change-view">Change View</button>
+        <button class="delete">Delete</button>`),
+            expand()
+    }
+    if (isExpanded === false) {
+        return $(contentSection).html(''),
+            $(buttonSection).html('<button class="change-view">Change View</button>'),
+            expand()
+    }
 }
 
 // display new form to the dom
@@ -68,13 +90,9 @@ let bookmarkTemplate = function () {
                     <p class="bm-tilte">${bookmark.title}</p>
                     <p class="bm-rating">${bookmark.rating} &#11088</p>
                 </div>
-                <div class="expanded-view hidden">
-                    <a href="${bookmark.url}" class="bm-website">Vist Website</a>
-                    ${descriptionCheck(bookmark.desc)}
-                </div>
+                <div class="expanded-view"></div>
                 <div class="bookmark-buttons">
                     <button class="change-view">Change View</button>
-                    <button class="delete hidden">Delete</button>
                 </div>
             </li>`}).join('')}
         </ ul>`

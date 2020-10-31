@@ -20,6 +20,8 @@ class Bookmark {
             await api.createBookmark(newBookmark)
                 // adds bookmark to the store
                 .then(createdBookmark => {
+                    // adds key "expanded" to the newly created bookmark 
+                    createdBookmark.expanded = false;
                     store.bookmarks.push(createdBookmark);
                     ui.render('#bookmark-temp', ui.bookmarkTemplate());
                 })
@@ -53,8 +55,8 @@ const submitForm = function () {
                 return alert("Url must include 'https://'");
             }
             else {
-                const currentBookmark = new Bookmark(title, url, desc, rating)
-                currentBookmark.addItem(currentBookmark)
+                const currentBookmark = new Bookmark(title, url, desc, rating);
+                currentBookmark.addItem(currentBookmark);
             }
             console.log(store.bookmarks);
             ui.render("#form", '');
